@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+
+    <ion-title>
+Page d'accueil
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="onToggleMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+</ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <button ion-button [navPush]="bookListPage">Livres</button>
+  <button ion-button [navPush]="cdListPage">CDs</button>
+</ion-content>
+

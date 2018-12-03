@@ -1,0 +1,60 @@
+<ion-header>
+
+        <ion-navbar>
+            <ion-buttons>
+                <button ion-button clear (click)="dismissModal()">Fermer</button>
+              </ion-buttons>
+          <ion-title>{{ cd.name}}</ion-title>
+        </ion-navbar>
+      
+      </ion-header>
+      
+      <ion-content padding>
+          <ion-card [ngClass]="{'is-lend': cd.isLend, 'is-noLend': !cd.isLend}">
+            <ion-card-header>{{ cd.name }}</ion-card-header>
+            <ion-card-content>
+              <p *ngFor="let line of cd.description">{{ line }}</p>
+            </ion-card-content>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <button
+                          ion-button
+                          full
+                          color="danger"
+                          [disabled]="!cd.isLend"
+                          (click)="onToggleCd()">Prêter</button>
+                      </ion-col>
+                      <ion-col>
+                        <button
+                          ion-button
+                          full
+                          color="secondary"
+                          [disabled]="cd.isLend"
+                          (click)="onToggleCd()">Rendre</button>
+                      </ion-col>
+                </ion-row>
+              </ion-grid>
+              <form #f="ngForm" (ngSubmit)="onSubmitForm(f)">
+                <ion-list>
+                  <ion-item>
+                    <ion-label>Prêter à :</ion-label>
+                    <ion-input name="userName" [(ngModel)]="cd.userName"></ion-input>
+                  </ion-item>
+                </ion-list>
+                <button type="button"
+                ion-button
+                full
+                color="danger"
+                (click)="onDeleteName()">
+          Supprimer Nom
+        </button>
+        <button type="submit"
+                ion-button
+                full
+                color="secondary">
+          Enregistrer Nom
+        </button>
+          </form>
+          </ion-card>
+        </ion-content>

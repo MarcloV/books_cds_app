@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>CDs</ion-title>
+      <ion-buttons start>
+          <button ion-button icon-only (click)="onToggleMenu()">
+            <ion-icon name="menu"></ion-icon>
+          </button>
+    </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+      <ion-list>
+        <button ion-item *ngFor="let cd of cdsList; let i = index " (click)="onLoadCd(i)">
+            <ion-icon name="cart" [color]="cd.isLend ? 'secondary' : 'danger'"></ion-icon>
+          {{ cd.name }}
+        </button>
+      </ion-list>
+      <button ion-button full (click)="onNewCd()">Nouvel Cd</button>
+      <ion-card>
+        <ion-card-header>Données</ion-card-header>
+        <ion-card-content>
+            <button ion-button block outline (click)="onSaveList()">Enregistrer</button>
+            <button ion-button block outline (click)="onFetchList()">Récupérer</button>
+        </ion-card-content>
+    </ion-card>
+    </ion-content>
